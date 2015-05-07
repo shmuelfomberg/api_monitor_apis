@@ -392,7 +392,7 @@
         </Api>
         <Api Name="HidP_GetData">
             <Param Type="HIDP_REPORT_TYPE" Name="ReportType" />
-            <Param Type="PHIDP_DATA" Name="DataList" />
+            <Param Type="PHIDP_DATA" Name="DataList" PostCount="DataLength" />
             <Param Type="PULONG" Name="DataLength" />
             <Param Type="PHIDP_PREPARSED_DATA" Name="PreparsedData" />
             <Param Type="PCHAR" Name="Report" />
