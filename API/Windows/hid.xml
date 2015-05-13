@@ -408,7 +408,7 @@
             <Return Type="[HIDP_STATUS]" />
         </Api>
         <Api Name="HidP_GetLinkCollectionNodes">
-            <Param Type="PHIDP_LINK_COLLECTION_NODE" Name="LinkCollectionNodes" />
+            <Param Type="PHIDP_LINK_COLLECTION_NODE" Name="LinkCollectionNodes" PostCount="LinkCollectionNodesLength"  />
             <Param Type="PULONG" Name="LinkCollectionNodesLength" />
             <Param Type="PHIDP_PREPARSED_DATA" Name="PreparsedData" />
             <Return Type="[HIDP_STATUS]" />

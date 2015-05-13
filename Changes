@@ -1,2 +1,5 @@
+* May 13, 2015
+	Improved Windows\hid\HidP_GetLinkCollectionNodes
+
 * May 7, 2015
 	Improved Windows\hid\HidP_GetData function
