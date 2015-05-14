@@ -1,3 +1,6 @@
+* May 14, 2015
+	Added XINPUT (1_3 and 1_4) support
+
 * May 13, 2015
 	Improved Windows\hid\HidP_GetLinkCollectionNodes
 
