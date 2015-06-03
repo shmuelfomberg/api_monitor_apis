@@ -65,6 +65,13 @@ or have multiple Category *statements* dividing the Api block to various categor
 	As statement:
 	<Category Name="Visual C++ Run-Time Library/Buffer Manipulation" />
 
+If a module re-export APIs of different DLL, use the SourceModule block. optional attribute Copy="True".
+
+	<SourceModule Name="Advapi32.dll" Include="Windows\Advapi32.xml">
+		<Api Name="RegCloseKey" />
+		.....
+	</SourceModule>
+	
 API Functions
 =============
 
@@ -79,6 +86,7 @@ Attributes:
 
 * Name: Function name. 
 * Ordinal: The ordinal number of the function. Some application load by ordinal instead of by name.
+* BothCharset: set to "True" if this API have both A and W versions.
 
 Sub tags:
 
