@@ -167,6 +167,7 @@
                 <Set Name="DIDFT_OUTPUT"                Value="0x10000000" />
                 <Set Name="DIDFT_VENDORDEFINED"         Value="0x04000000" />
                 <Set Name="DIDFT_ALIAS"                 Value="0x08000000" />
+                <Set Name="DIDFT_OPTIONAL"              Value="0x80000000" />
                 <Set Name="DIDFT_NOCOLLECTION"          Value="0x00FFFF00" />
             </Flag>
         </Variable>

@@ -490,7 +490,7 @@
         </Api>
         <Api Name="HidP_GetValueCaps">
             <Param Type="HIDP_REPORT_TYPE" Name="ReportType" />
-            <Param Type="PHIDP_VALUE_CAPS" Name="ValueCaps" />
+            <Param Type="PHIDP_VALUE_CAPS" Name="ValueCaps" PostCount="ValueCapsLength" />
             <Param Type="PUSHORT" Name="ValueCapsLength" />
             <Param Type="PHIDP_PREPARSED_DATA" Name="PreparsedData" />
             <Return Type="[HIDP_STATUS]" />
