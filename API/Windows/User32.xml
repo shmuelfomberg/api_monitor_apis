@@ -1133,6 +1133,36 @@
             </Flag>
         </Variable>
 
+        <Variable Name="[ChangeDisplaySettingsFlags]" Type="Alias" Base="DWORD">
+            <Display Name="DWORD" />
+            <Flag>
+				<Set Name="CDS_UPDATEREGISTRY"        Value="0x00000001" />
+				<Set Name="CDS_TEST"                  Value="0x00000002" />
+				<Set Name="CDS_FULLSCREEN"            Value="0x00000004" />
+				<Set Name="CDS_GLOBAL"                Value="0x00000008" />
+				<Set Name="CDS_SET_PRIMARY"           Value="0x00000010" />
+				<Set Name="CDS_VIDEOPARAMETERS"       Value="0x00000020" />
+				<Set Name="CDS_ENABLE_UNSAFE_MODES"   Value="0x00000100" />
+				<Set Name="CDS_DISABLE_UNSAFE_MODES"  Value="0x00000200" />
+				<Set Name="CDS_RESET"   			  Value="0x40000000" />
+				<Set Name="CDS_RESET_EX"              Value="0x20000000" />
+				<Set Name="CDS_NORESET"               Value="0x10000000" />
+            </Flag>
+        </Variable>
+
+		<Variable Name="[ChangeDisplaySettingsReturn]" Type="Alias" Base="LONG">
+			<Enum>
+				<Set Name="DISP_CHANGE_SUCCESSFUL"   Value="0" />
+				<Set Name="DISP_CHANGE_RESTART"      Value="1" />
+				<Set Name="DISP_CHANGE_FAILED"       Value="-1" />
+				<Set Name="DISP_CHANGE_BADMODE"      Value="-2" />
+				<Set Name="DISP_CHANGE_NOTUPDATED"   Value="-3" />
+				<Set Name="DISP_CHANGE_BADFLAGS"     Value="-4" />
+				<Set Name="DISP_CHANGE_BADPARAM"     Value="-5" />
+				<Set Name="DISP_CHANGE_BADDUALVIEW"  Value="-6" />
+			</Enum>
+		</Variable>
+		
         <!-- [WinEventFlags] -->
         <Variable Name="[WinEventFlags]" Type="Alias" Base="UINT">
             <Display Name="UINT" />
@@ -3659,17 +3689,17 @@
         <Category Name="Graphics and Gaming/Legacy Graphics/Windows GDI/Device Contexts" />
         <Api Name="ChangeDisplaySettings" BothCharset="True">
             <Param Type="DEVMODE*" Name="lpDevMode" />
-            <Param Type="DWORD" Name="dwflags" />
-            <Return Type="LONG" />
+            <Param Type="[ChangeDisplaySettingsFlags]" Name="dwflags" />
+            <Return Type="[ChangeDisplaySettingsReturn]" />
             <Success Return="NotEqual" Value="0" />
         </Api>
         <Api Name="ChangeDisplaySettingsEx" BothCharset="True">
             <Param Type="LPCTSTR" Name="lpszDeviceName" />
             <Param Type="DEVMODE*" Name="lpDevMode" />
             <Param Type="HWND" Name="hwnd" />
-            <Param Type="DWORD" Name="dwflags" />
+            <Param Type="[ChangeDisplaySettingsFlags]" Name="dwflags" />
             <Param Type="LPVOID" Name="lParam" />
-            <Return Type="LONG" />
+            <Return Type="[ChangeDisplaySettingsReturn]" />
             <Success Return="NotEqual" Value="0" />
         </Api>
         <Api Name="EnumDisplayDevices" BothCharset="True">

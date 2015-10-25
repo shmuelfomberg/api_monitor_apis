@@ -91,7 +91,7 @@ Attributes:
 Sub tags:
 
 * Param: function parameter. see section below.
-* Return: The return type. 
+* Return: The return type. (can be an Enum)
 * Success: determain if the call was success or not. see section below.
 	
 Function Parameters
