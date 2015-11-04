@@ -1022,6 +1022,15 @@
                 <Set Name="SM_SERVERR2"                     Value="89" />
                 <Set Name="SM_MOUSEHORIZONTALWHEELPRESENT"  Value="91" />
                 <Set Name="SM_CXPADDEDBORDER"               Value="92" />
+                <Set Name="SM_DIGITIZER"               		Value="94" />
+                <Set Name="SM_MAXIMUMTOUCHES"               Value="95" />
+                <Set Name="SM_CMETRICS"               		Value="97" />
+                <Set Name="SM_REMOTESESSION"               	Value="4096" />
+                <Set Name="SM_SHUTTINGDOWN"               	Value="8192" />
+                <Set Name="SM_REMOTECONTROL"               	Value="8193" />
+                <Set Name="SM_CARETBLINKINGENABLED"         Value="8194" />
+                <Set Name="SM_CONVERTIBLESLATEMODE"         Value="8195" />
+                <Set Name="SM_SYSTEMDOCKED"               	Value="8196" />
             </Enum>
         </Variable>
 
