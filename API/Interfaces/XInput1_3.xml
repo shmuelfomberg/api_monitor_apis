@@ -1,0 +1,123 @@
+<ApiMonitor>
+
+    <Include Filename="Headers\windows.h.xml" />
+	
+    <Headers>
+		<Variable Name="[XINPUT_BUTTONS]" Type="Alias" Base="WORD">
+			<Display Name="WORD" />
+			<Flag>
+				<Set Name="XINPUT_GAMEPAD_DPAD_UP"        	Value="0x0001" />
+				<Set Name="XINPUT_GAMEPAD_DPAD_DOWN"        Value="0x0002" />
+				<Set Name="XINPUT_GAMEPAD_DPAD_LEFT"        Value="0x0004" />
+				<Set Name="XINPUT_GAMEPAD_DPAD_RIGHT"       Value="0x0008" />
+				<Set Name="XINPUT_GAMEPAD_START"        	Value="0x0010" />
+				<Set Name="XINPUT_GAMEPAD_BACK"        		Value="0x0020" />
+				<Set Name="XINPUT_GAMEPAD_LEFT_THUMB"       Value="0x0040" />
+				<Set Name="XINPUT_GAMEPAD_RIGHT_THUMB"      Value="0x0080" />
+				<Set Name="XINPUT_GAMEPAD_LEFT_SHOULDER"    Value="0x0100" />
+				<Set Name="XINPUT_GAMEPAD_RIGHT_SHOULDER" 	Value="0x0200" />
+				<Set Name="XINPUT_GAMEPAD_GUIDE"          	Value="0x0400" />
+				<Set Name="XINPUT_GAMEPAD_A"        		Value="0x1000" />
+				<Set Name="XINPUT_GAMEPAD_B"        		Value="0x2000" />
+				<Set Name="XINPUT_GAMEPAD_X"        		Value="0x4000" />
+				<Set Name="XINPUT_GAMEPAD_Y"        		Value="0x8000" />
+			</Flag>
+		</Variable>
+	
+		<Variable Name="XINPUT_GAMEPAD" Type="Struct">
+            <Field Type="[XINPUT_BUTTONS]"    Name="wButtons" />
+            <Field Type="BYTE"    Name="bLeftTrigger" />
+            <Field Type="BYTE"    Name="bRightTrigger" />
+            <Field Type="SHORT"   Name="sThumbLX" />
+            <Field Type="SHORT"   Name="sThumbLY" />
+            <Field Type="SHORT"   Name="sThumbRX" />
+            <Field Type="SHORT"   Name="sThumbRY" />
+        </Variable>
+
+        <Variable Name="XINPUT_STATE" Type="Struct">
+            <Field Type="DWORD"            Name="dwPacketNumber" />
+            <Field Type="XINPUT_GAMEPAD"   Name="Gamepad" />
+        </Variable>
+		<Variable Name="XINPUT_STATE*"      Type="Pointer"  Base="XINPUT_STATE" />
+
+        <Variable Name="XINPUT_VIBRATION" Type="Struct">
+            <Field Type="WORD"   Name="wLeftMotorSpeed" />
+            <Field Type="WORD"   Name="wRightMotorSpeed" />
+        </Variable>
+		<Variable Name="XINPUT_VIBRATION*"      Type="Pointer"  Base="XINPUT_VIBRATION" />
+
+        <Variable Name="XINPUT_CAPABILITIES" Type="Struct">
+            <Field Type="BYTE"    Name="Type" />
+            <Field Type="BYTE"    Name="SubType" />
+            <Field Type="WORD"    Name="Flags" />
+            <Field Type="XINPUT_GAMEPAD"     Name="Gamepad" />
+            <Field Type="XINPUT_VIBRATION"   Name="Vibration" />
+        </Variable>
+		<Variable Name="XINPUT_CAPABILITIES*"      Type="Pointer"  Base="XINPUT_CAPABILITIES" />
+    </Headers>
+	
+    <Module 
+		Name="xinput1_3.dll" 
+		CallingConvention="STDCALL" 
+		ErrorFunc="HRESULT" 
+		OnlineHelp="MSDN"
+		Category="Graphics and Gaming/DirectX Graphics and Gaming/DirectX Input"
+		>
+
+		<ModuleAlias Name="xinput1_1.dll" />
+		<ModuleAlias Name="xinput1_2.dll" />
+		<ModuleAlias Name="xinput1_3.dll" />
+
+		
+		<Api Name="XInputEnable" Ordinal="5">
+            <Param Type="BOOL" Name="enable" />
+            <Return Type="void" />
+        </Api>
+
+	    <Api Name="XInputGetCapabilities" Ordinal="4">
+            <Param Type="DWORD" Name="dwUserIndex" />
+            <Param Type="DWORD" Name="dwFlags" />
+            <Param Type="XINPUT_CAPABILITIES*" Name="pCapabilities" />
+            <Return Type="DWORD" />
+        </Api>
+
+	    <Api Name="XInputGetState" Ordinal="2">
+            <Param Type="DWORD" Name="dwUserIndex" />
+            <Param Type="XINPUT_STATE*" Name="pState" />
+            <Return Type="DWORD" />
+        </Api>
+		
+	    <Api Name="XInputSetState" Ordinal="3">
+            <Param Type="DWORD" Name="dwUserIndex" />
+            <Param Type="XINPUT_VIBRATION*" Name="pVibration" />
+            <Return Type="DWORD" />
+        </Api>
+
+		<!-- Version 1_3 -->
+		
+		<Api Name="XInputGetStateEx" Ordinal="100">
+            <Param Type="DWORD" Name="dwUserIndex" />
+            <Param Type="XINPUT_STATE*" Name="pState" />
+            <Return Type="DWORD" />
+        </Api>
+
+		<Api Name="XInputWaitForGuideButton" Ordinal="101">
+            <Param Type="DWORD"  Name="dwUserIndex" />
+            <Param Type="DWORD"  Name="dwFlag" />
+            <Param Type="LPVOID" Name="pUnKnown" />
+            <Return Type="DWORD" />
+        </Api>
+
+		<Api Name="XInputCancelGuideButtonWait" Ordinal="102">
+            <Param Type="DWORD" Name="dwUserIndex" />
+            <Return Type="DWORD" />
+        </Api>
+
+		<Api Name="XInputPowerOffController" Ordinal="103">
+            <Param Type="DWORD" Name="dwUserIndex" />
+            <Return Type="DWORD" />
+        </Api>
+		
+    </Module>
+	
+</ApiMonitor>

@@ -88,5 +88,16 @@
             <Success Return="Greater" Value="-1" ErrorFunc="HRESULT" />
         </Variable>
 
+		<!-- [SCARD_DISPOSITION] -->
+		<Variable Name="[SCARD_DISPOSITION]" Type="Alias" Base="LONG">
+			<Display Name="LONG" />
+			<Enum>
+				<Set Name="SCARD_LEAVE_CARD"              Value="0" />
+				<Set Name="SCARD_RESET_CARD"              Value="1" />
+				<Set Name="SCARD_UNPOWER_CARD"            Value="2" />
+				<Set Name="SCARD_EJECT_CARD"              Value="3" />
+			</Enum>
+		</Variable>
+		
     </Headers>
 </ApiMonitor>

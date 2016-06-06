@@ -122,12 +122,12 @@
         </Api>
         <Api Name="SCardDisconnect">
             <Param Type="SCARDHANDLE" Name="hCard" />
-            <Param Type="DWORD" Name="dwDisposition" />
+            <Param Type="[SCARD_DISPOSITION]" Name="dwDisposition" />
             <Return Type="[SCARD_ERROR]" />
         </Api>
         <Api Name="SCardEndTransaction">
             <Param Type="SCARDHANDLE" Name="hCard" />
-            <Param Type="DWORD" Name="dwDisposition" />
+            <Param Type="[SCARD_DISPOSITION]" Name="dwDisposition" />
             <Return Type="[SCARD_ERROR]" />
         </Api>
         <Api Name="SCardEstablishContext">
@@ -351,11 +351,11 @@
         </Api>
         <Api Name="SCardTransmit">
             <Param Type="SCARDHANDLE" Name="hCard" />
-            <Param Type="LPCSCARD_IO_REQUEST" Name="pioSendPci" />
-            <Param Type="LPCBYTE" Name="pbSendBuffer" />
+            <Param Type="LPCSCARD_IO_REQUEST" Name="pioSendPci"/>
+            <Param Type="LPCBYTE" Name="pbSendBuffer" Count="cbSendLength" />
             <Param Type="DWORD" Name="cbSendLength" />
             <Param Type="LPSCARD_IO_REQUEST" Name="pioRecvPci" />
-            <Param Type="LPBYTE" Name="pbRecvBuffer" />
+            <Param Type="LPBYTE" Name="pbRecvBuffer" PostCount="pcbRecvLength"/>
             <Param Type="LPDWORD" Name="pcbRecvLength" />
             <Return Type="[SCARD_ERROR]" />
         </Api>

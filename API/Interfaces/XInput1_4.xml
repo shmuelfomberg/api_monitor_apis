@@ -1,0 +1,47 @@
+<ApiMonitor>
+    <Include Filename="Headers\windows.h.xml" />
+    <Include Filename="Interfaces\XInput1_3.xml" />
+    <Module 
+		Name="XInput1_4.dll" 
+		CallingConvention="STDCALL" 
+		ErrorFunc="HRESULT" 
+		OnlineHelp="MSDN"
+		Category="Graphics and Gaming/DirectX Graphics and Gaming/DirectX Input"
+		>
+
+		<ModuleAlias Name="XInput9_1_0.dll" />
+
+		<SourceModule Name="xinput1_3.dll" Copy="True" Include="Interfaces\XInput1_3.xml">
+			<Api Name="XInputEnable" Ordinal="5"/>
+			<Api Name="XInputGetCapabilities" Ordinal="4"/>
+			<Api Name="XInputGetState" Ordinal="2"/>
+			<Api Name="XInputSetState" Ordinal="3"/>
+			<Api Name="XInputGetStateEx" Ordinal="100"/>
+			<Api Name="XInputWaitForGuideButton" Ordinal="101"/>
+			<Api Name="XInputCancelGuideButtonWait" Ordinal="102"/>
+			<Api Name="XInputPowerOffController" Ordinal="103"/>
+		</SourceModule>
+
+	<!-- Version 1_4 -->
+		
+		<Api Name="XInputGetBaseBusInformation" Ordinal="104">
+            <Param Type="DWORD" Name="dwUserIndex" />
+            <Param Type="DWORD" Name="a4" />
+            <Return Type="DWORD" />
+        </Api>
+
+	    <Api Name="XInputGetCapabilitiesEx" Ordinal="108">
+            <Param Type="DWORD" Name="a1" />
+            <Param Type="DWORD" Name="dwUserIndex" />
+            <Param Type="DWORD" Name="dwFlags" />
+            <Param Type="XINPUT_CAPABILITIES*" Name="pCapabilities" />
+            <Return Type="DWORD" />
+        </Api>
+		<!--
+			a1 should be 1, or we will get ERROR_INVALID_DATA
+		-->
+		
+	</Module>
+
+	
+</ApiMonitor>

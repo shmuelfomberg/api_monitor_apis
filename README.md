@@ -18,6 +18,16 @@ Root element - ApiMonitor
 ApiMonitor can contain multiple include statements:
 
 	<Include Filename="Headers\windows.h.xml" />
+
+An include statement adds the "Header" part of the target file to the current file.
+
+ApiMonitor can contain one header block:
+
+    <Headers>
+    </Headers>
+
+The inside of the header block will be automatically added to the modules inside the file,
+and can be included from other files. This is a good place to put Variable blocks.
 	
 ApiMonitor can also contain multiple module blocks:
 
@@ -41,14 +51,13 @@ ApiMonitor can contain multiple Interface blocks. An Interface can contain Api b
 Module
 ======
 	
-Module can contain multiple API functions: (see the section about Function Parameters)
+Module can contain multiple API functions. (see the section about Function Parameters)
 
-
-Module can also contain multiple ModuleAlias statments:
+Module can also contain multiple ModuleAlias statements:
 
 	<ModuleAlias Name="msvcr70.dll" />
 
-Module can conatin multiple Variable blocks / statements. see seperate section.
+Module can contain multiple Variable blocks / statements. see separate section.
 
 Module can either have a category attribute, that puts the whole module under this category,
 or have multiple Category *statements* dividing the Api block to various categories.
@@ -65,12 +74,14 @@ or have multiple Category *statements* dividing the Api block to various categor
 	As statement:
 	<Category Name="Visual C++ Run-Time Library/Buffer Manipulation" />
 
-If a module re-export APIs of different DLL, use the SourceModule block. optional attribute Copy="True".
+If a module re-export APIs of different DLL, use the SourceModule block.
 
 	<SourceModule Name="Advapi32.dll" Include="Windows\Advapi32.xml">
 		<Api Name="RegCloseKey" />
 		.....
 	</SourceModule>
+	
+Optional attribute: Copy="True" will cause the functions appear twice in the API Filter.
 	
 API Functions
 =============
@@ -86,7 +97,8 @@ Attributes:
 
 * Name: Function name. 
 * Ordinal: The ordinal number of the function. Some application load by ordinal instead of by name.
-* BothCharset: set to "True" if this API have both A and W versions.
+* BothCharset: set to "True" if this API have both A(Ascii) and W(Wide Char) versions.
+* If BothCharset is true, instead of Ordinal you should specify OrdinalA and OrdinalW
 
 Sub tags:
 
@@ -128,7 +140,7 @@ Variable
 ========
 
 As much as I can tell, the name attribute is a blind string. there is 
-no special meaning to square baracks or astaricks. 
+no special meaning to square barracks or astaricks. 
 
 Defining a struct:
 
@@ -152,7 +164,7 @@ Defining an Enum:
 		</Enum>
 	</Variable>
 
-Defining a flag-set variable. apperently values can overlap.
+Defining a flag-set variable. apparently values can overlap.
 
         <Variable Name="[DDSD_FLAGS]" Type="Alias" Base="DWORD">
             <Display Name="DWORD" />
@@ -163,4 +175,10 @@ Defining a flag-set variable. apperently values can overlap.
                 <Set Name="DDSD_ALL"                Value="0x00fff9ee" />
             </Flag>
         </Variable>
-	
+
+Found Bugs
+==========
+
+About API Ordinal - I found that a function that is loaded by ordinal will not be captured
+if the DLL is defined in ModuleAlias.  
+Also, if the API is imported from another using SourceModule, then Copy="True" should be set.
