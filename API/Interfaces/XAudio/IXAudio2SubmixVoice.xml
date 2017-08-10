@@ -1,0 +1,6 @@
+<ApiMonitor>
+    <Include Filename="Interfaces\XAudio\xaudio_headers.xml" />
+    <Include Filename="Interfaces\XAudio\IXAudio2Voice.xml" />
+    <Interface Name="IXAudio2SubmixVoice" BaseInterface="IXAudio2Voice" OnlineHelp="MSDN" ErrorFunc="HRESULT" Category="Audio and Video/Core Audio/Windows Audio Session">
+		</Interface>
+</ApiMonitor>

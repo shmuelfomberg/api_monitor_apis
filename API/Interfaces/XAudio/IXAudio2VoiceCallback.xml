@@ -1,0 +1,33 @@
+<ApiMonitor>
+    <Include Filename="Interfaces\XAudio\xaudio_headers.xml" />
+    <Include Filename="Interfaces\XAudio\IXAudio2Voice.xml" />
+    <Interface Name="IXAudio2VoiceCallback" OnlineHelp="MSDN" ErrorFunc="HRESULT" Category="Audio and Video/Core Audio/Windows Audio Session">
+				<Api Name="OnVoiceProcessingPassStart">
+            <Param Type="UINT32" Name="BytesRequired" />
+            <Return Type="void" />
+        </Api>
+				<Api Name="OnVoiceProcessingPassEnd">
+            <Return Type="void" />
+        </Api>
+				<Api Name="OnStreamEnd">
+            <Return Type="void" />
+        </Api>
+				<Api Name="OnBufferStart">
+            <Param Type="void*" Name="pBufferContext" />
+            <Return Type="void" />
+        </Api>
+				<Api Name="OnBufferEnd">
+            <Param Type="void*" Name="pBufferContext" />
+            <Return Type="void" />
+        </Api>
+				<Api Name="OnLoopEnd">
+            <Param Type="void*" Name="pBufferContext" />
+            <Return Type="void" />
+        </Api>
+				<Api Name="OnVoiceError">
+            <Param Type="void*" Name="pBufferContext" />
+            <Param Type="HRESULT" Name="Error" />
+            <Return Type="void" />
+        </Api>
+		</Interface>
+</ApiMonitor>

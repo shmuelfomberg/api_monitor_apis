@@ -1,0 +1,65 @@
+<ApiMonitor>
+    <Include Filename="Interfaces\IUnknown.xml" />
+    <Include Filename="Interfaces\XAudio\xaudio_headers.xml" />
+    <Interface Name="IXAudio2" Id="{60D8DAC8-5AA1-4E8E-B597-2F5E2883D484}" BaseInterface="IUnknown" OnlineHelp="MSDN" ErrorFunc="HRESULT" Category="Audio and Video/Core Audio/Windows Audio Session">
+
+				<Api Name="RegisterForCallbacks">
+            <Param Type="IXAudio2EngineCallback*" Name="pCallback" />
+            <Return Type="[XA2_HRESULT]" />
+        </Api>
+				<Api Name="UnregisterForCallbacks">
+            <Param Type="IXAudio2EngineCallback*" Name="pCallback" />
+            <Return Type="void" />
+        </Api>
+				<Api Name="CreateSourceVoice">
+            <Param Type="IXAudio2SourceVoice**" Name="ppSourceVoice" />
+            <Param Type="WAVEFORMATEX*" Name="pSourceFormat" />
+            <Param Type="UINT32" Name="Flags" />
+            <Param Type="float" Name="MaxFrequencyRatio" />
+            <Param Type="IXAudio2VoiceCallback*" Name="pCallback" />
+            <Param Type="XAUDIO2_VOICE_SENDS*" Name="pSendList" />
+            <Param Type="XAUDIO2_EFFECT_CHAIN*" Name="pEffectChain" />
+            <Return Type="[XA2_HRESULT]" />
+        </Api>
+				<Api Name="CreateSourceVoice">
+            <Param Type="IXAudio2SubmixVoice**" Name="ppSubmixVoice" />
+            <Param Type="UINT32" Name="InputChannels" />
+            <Param Type="UINT32" Name="InputSampleRate" />
+            <Param Type="UINT32" Name="Flags" />
+            <Param Type="UINT32" Name="ProcessingStage" />
+            <Param Type="XAUDIO2_VOICE_SENDS*" Name="pSendList" />
+            <Param Type="XAUDIO2_EFFECT_CHAIN*" Name="pEffectChain" />
+            <Return Type="[XA2_HRESULT]" />
+        </Api>
+				<Api Name="CreateSourceVoice">
+            <Param Type="IXAudio2MasteringVoice**" Name="ppMasteringVoice" />
+            <Param Type="UINT32" Name="InputChannels" />
+            <Param Type="UINT32" Name="InputSampleRate" />
+            <Param Type="UINT32" Name="Flags" />
+            <Param Type="LPCWSTR" Name="szDeviceId" />
+            <Param Type="XAUDIO2_EFFECT_CHAIN*" Name="pEffectChain" />
+            <Param Type="[AUDIO_STREAM_CATEGORY]" Name="StreamCategory" />
+            <Return Type="[XA2_HRESULT]" />
+        </Api>
+				<Api Name="StartEngine">
+            <Return Type="[XA2_HRESULT]" />
+        </Api>
+				<Api Name="StopEngine">
+            <Return Type="void" />
+        </Api>
+				<Api Name="CommitChanges">
+            <Param Type="UINT32" Name="OperationSet" />
+            <Return Type="[XA2_HRESULT]" />
+        </Api>
+				<Api Name="GetPerformanceData">
+            <Param Type="XAUDIO2_PERFORMANCE_DATA*" Name="pPerfData" />
+            <Return Type="void" />
+        </Api>
+				<Api Name="SetDebugConfiguration">
+            <Param Type="XAUDIO2_DEBUG_CONFIGURATION*" Name="pDebugConfiguration" />
+            <Param Type="PVOID" Name="pReserved" />
+            <Return Type="void" />
+        </Api>
+
+		</Interface>
+</ApiMonitor>

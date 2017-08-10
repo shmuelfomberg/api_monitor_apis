@@ -158,12 +158,19 @@ Defining a typedef:
 Defining an Enum:
 
 	<Variable Name="EXCEPTION_DISPOSITION" Type="Alias" Base="UINT">
+    <Display Name="UINT" />
 		<Enum>
 			<Set Name="ExceptionContinueExecution"      Value="0" />
 			<Set Name="ExceptionContinueSearch"         Value="1" />
 		</Enum>
 	</Variable>
 
+Attributes for Enum: 
+
+* Reset="True" (I'm not clear what it does)
+
+Display sub-tag is optional.
+	
 Defining a flag-set variable. apparently values can overlap.
 
         <Variable Name="[DDSD_FLAGS]" Type="Alias" Base="DWORD">
@@ -176,6 +183,8 @@ Defining a flag-set variable. apparently values can overlap.
             </Flag>
         </Variable>
 
+Display sub-tag is optional.
+				
 Found Bugs
 ==========
 

@@ -1,0 +1,104 @@
+<ApiMonitor>
+    <Include Filename="Interfaces\IUnknown.xml" />
+    <Include Filename="Interfaces\XAudio\xaudio_headers.xml" />
+    <Interface Name="IXAudio2Voice" OnlineHelp="MSDN" ErrorFunc="HRESULT" Category="Audio and Video/Core Audio/Windows Audio Session">
+				<Api Name="GetVoiceDetails">
+            <Param Type="XAUDIO2_VOICE_DETAILS*" Name="pVoiceDetails" />
+            <Return Type="void" />
+        </Api>
+				<Api Name="SetOutputVoices">
+            <Param Type="XAUDIO2_VOICE_SENDS*" Name="pSendList" />
+            <Return Type="[XA2_HRESULT]" />
+        </Api>
+				<Api Name="SetEffectChain">
+            <Param Type="XAUDIO2_EFFECT_CHAIN*" Name="pEffectChain" />
+            <Return Type="[XA2_HRESULT]" />
+        </Api>
+				<Api Name="EnableEffect">
+            <Param Type="UINT32" Name="EffectIndex" />
+            <Param Type="UINT32" Name="OperationSet" />
+            <Return Type="[XA2_HRESULT]" />
+        </Api>
+				<Api Name="DisableEffect">
+            <Param Type="UINT32" Name="EffectIndex" />
+            <Param Type="UINT32" Name="OperationSet" />
+            <Return Type="[XA2_HRESULT]" />
+        </Api>
+				<Api Name="GetEffectState">
+            <Param Type="UINT32" Name="EffectIndex" />
+            <Param Type="BOOL*" Name="pEnabled" />
+            <Return Type="void" />
+        </Api>
+				<Api Name="SetEffectParameters">
+            <Param Type="UINT32" Name="EffectIndex" />
+            <Param Type="PVOID" Name="pParameters" Count="ParametersByteSize"/>
+            <Param Type="UINT32" Name="ParametersByteSize" />
+            <Param Type="UINT32" Name="OperationSet" />
+            <Return Type="[XA2_HRESULT]" />
+        </Api>
+				<Api Name="GetEffectParameters">
+            <Param Type="UINT32" Name="EffectIndex" />
+            <Param Type="PVOID" Name="pParameters" Count="ParametersByteSize"/>
+            <Param Type="UINT32" Name="ParametersByteSize" />
+            <Return Type="[XA2_HRESULT]" />
+        </Api>
+				<Api Name="SetFilterParameters">
+            <Param Type="XAUDIO2_FILTER_PARAMETERS*" Name="pParameters" />
+            <Param Type="UINT32" Name="OperationSet" />
+            <Return Type="[XA2_HRESULT]" />
+        </Api>
+				<Api Name="GetFilterParameters">
+            <Param Type="XAUDIO2_FILTER_PARAMETERS*" Name="pParameters" />
+            <Return Type="void" />
+        </Api>
+				<Api Name="SetOutputFilterParameters">
+            <Param Type="IXAudio2Voice*" Name="pDestinationVoice" />
+            <Param Type="XAUDIO2_FILTER_PARAMETERS*" Name="pParameters" />
+            <Param Type="UINT32" Name="OperationSet" />
+            <Return Type="[XA2_HRESULT]" />
+        </Api>
+				<Api Name="GetOutputFilterParameters">
+            <Param Type="IXAudio2Voice*" Name="pDestinationVoice" />
+            <Param Type="XAUDIO2_FILTER_PARAMETERS*" Name="pParameters" />
+            <Return Type="void" />
+        </Api>
+				<Api Name="SetVolume">
+            <Param Type="float" Name="Volume" />
+            <Param Type="UINT32" Name="OperationSet" />
+            <Return Type="[XA2_HRESULT]" />
+        </Api>
+				<Api Name="GetVolume">
+            <Param Type="float*" Name="Volume" />
+            <Return Type="void" />
+        </Api>
+				<Api Name="SetChannelVolumes">
+            <Param Type="UINT32" Name="Channels" />
+            <Param Type="float*" Name="pVolumes" Count="Channels"/>
+            <Param Type="UINT32" Name="OperationSet" />
+            <Return Type="[XA2_HRESULT]" />
+        </Api>
+				<Api Name="GetChannelVolumes">
+            <Param Type="UINT32" Name="Channels" />
+            <Param Type="float*" Name="pVolumes" Count="Channels"/>
+            <Return Type="void" />
+        </Api>
+				<Api Name="SetOutputMatrix">
+            <Param Type="IXAudio2Voice*" Name="pDestinationVoice" />
+            <Param Type="UINT32" Name="SourceChannels" />
+            <Param Type="UINT32" Name="DestinationChannels" />
+            <Param Type="float*" Name="pLevelMatrix" 	/>
+            <Param Type="UINT32" Name="OperationSet" />
+            <Return Type="[XA2_HRESULT]" />
+        </Api>
+				<Api Name="GetOutputMatrix">
+            <Param Type="IXAudio2Voice*" Name="pDestinationVoice" />
+            <Param Type="UINT32" Name="SourceChannels" />
+            <Param Type="UINT32" Name="DestinationChannels" />
+						<Param Type="float*" Name="pLevelMatrix" />
+            <Return Type="void" />
+        </Api>
+				<Api Name="DestroyVoice">
+            <Return Type="void" />
+        </Api>
+		</Interface>
+</ApiMonitor>

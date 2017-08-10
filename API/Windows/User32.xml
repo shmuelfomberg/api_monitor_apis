@@ -1514,6 +1514,13 @@
                 <Set Name="ENUM_REGISTRY_SETTINGS"  Value="-2" />
             </Enum>
         </Variable>
+        <Variable Name="[EnumDisplaySettingsFlags]" Type="Alias" Base="DWORD">
+            <Display Name="DWORD" />
+            <Flag>
+                <Set Name="EDS_RAWMODE"     Value="0x00000002" />
+                <Set Name="EDS_ROTATEDMODE" Value="0x00000004" />
+            </Flag>
+        </Variable>
 
         <!-- [ButtonState] -->
         <Variable Name="[ButtonState]" Type="Alias" Base="UINT">
@@ -2522,6 +2529,22 @@
             </Flag>
         </Variable>
 
+        <Variable Name="[uiCommand2]" Type="Alias" Base="UINT">
+            <Display Name="UINT" />
+            <Enum>
+                <Set Name="RID_HEADER"             Value="0x10000005" />
+                <Set Name="RID_INPUT"        	   Value="0x10000003" />
+            </Enum>
+        </Variable>
+        <Variable Name="[uiCommand1]" Type="Alias" Base="UINT">
+            <Display Name="UINT" />
+            <Enum>
+                <Set Name="RIDI_DEVICENAME"        Value="0x20000007" />
+                <Set Name="RIDI_DEVICEINFO"        Value="0x2000000b" />
+                <Set Name="RIDI_PREPARSEDDATA"     Value="0x20000005" />
+            </Enum>
+        </Variable>
+		
         <!-- Dialog Boxes -->
         <!-- CreateDialog is a macro -->
         <!-- CreateDialogIndirect is a macro -->
@@ -3726,9 +3749,9 @@
         </Api>
         <Api Name="EnumDisplaySettingsEx" BothCharset="True">
             <Param Type="LPCTSTR" Name="lpszDeviceName" />
-            <Param Type="DWORD" Name="iModeNum" />
+            <Param Type="[EnumDisplaySettingsEnum]" Name="iModeNum" />
             <Param Type="DEVMODE*" Name="lpDevMode" />
-            <Param Type="DWORD" Name="dwFlags" />
+            <Param Type="[EnumDisplaySettingsFlags]" Name="dwFlags" />
             <Return Type="BOOL" />
         </Api>
         <Api Name="GetDC">
@@ -5008,8 +5031,9 @@
         </Api>
         <Api Name="GetRawInputData">
             <Param Type="HRAWINPUT" Name="hRawInput" />
-            <Param Type="UINT" Name="uiCommand" />
-            <Param Type="LPVOID" Name="pData" />
+            <Param Type="[uiCommand2]" Name="uiCommand" />
+            <!--Param Type="LPVOID" Name="pData" PostLength="pcbSize" /-->
+            <Param Type="PRAWINPUT" Name="pData" />
             <Param Type="PUINT" Name="pcbSize" />
             <Param Type="UINT" Name="cbSizeHeader" />
             <Return Type="UINT" />
@@ -5017,8 +5041,8 @@
         </Api>
         <Api Name="GetRawInputDeviceInfo" BothCharset="True">
             <Param Type="HANDLE" Name="hDevice" />
-            <Param Type="UINT" Name="uiCommand" />
-            <Param Type="LPVOID" Name="pData" />
+            <Param Type="[uiCommand1]" Name="uiCommand" />
+            <Param Type="LPVOID" Name="pData" PostLength="pcbSize" />
             <Param Type="PUINT" Name="pcbSize" />
             <Return Type="UINT" />
             <Success Return="NotEqual" Value="0" />

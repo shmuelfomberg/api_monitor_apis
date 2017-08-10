@@ -1,0 +1,49 @@
+<ApiMonitor>
+    <Include Filename="Interfaces\XAudio\xaudio_headers.xml" />
+    <Include Filename="Interfaces\XAudio\IXAudio2Voice.xml" />
+    <Interface Name="IXAudio2SourceVoice" BaseInterface="IXAudio2Voice" OnlineHelp="MSDN" ErrorFunc="HRESULT" Category="Audio and Video/Core Audio/Windows Audio Session">
+				<Api Name="Start">
+            <Param Type="UINT32" Name="Flags" />
+            <Param Type="UINT32" Name="OperationSet" />
+            <Return Type="[XA2_HRESULT]" />
+        </Api>
+				<Api Name="Stop">
+            <Param Type="UINT32" Name="Flags" />
+            <Param Type="UINT32" Name="OperationSet" />
+            <Return Type="[XA2_HRESULT]" />
+        </Api>
+				<Api Name="SubmitSourceBuffer">
+            <Param Type="XAUDIO2_BUFFER*" Name="pBuffer" />
+            <Param Type="XAUDIO2_BUFFER_WMA*" Name="pBufferWMA" />
+            <Return Type="[XA2_HRESULT]" />
+        </Api>
+				<Api Name="FlushSourceBuffers">
+            <Return Type="[XA2_HRESULT]" />
+        </Api>
+				<Api Name="Discontinuity">
+            <Return Type="[XA2_HRESULT]" />
+        </Api>
+				<Api Name="ExitLoop">
+            <Param Type="UINT32" Name="OperationSet" />
+            <Return Type="[XA2_HRESULT]" />
+        </Api>
+				<Api Name="GetState">
+            <Param Type="XAUDIO2_VOICE_STATE*" Name="pVoiceState" />
+            <Param Type="UINT32" Name="Flags" />
+            <Return Type="void" />
+        </Api>
+				<Api Name="SetFrequencyRatio">
+            <Param Type="float" Name="Ratio" />
+            <Param Type="UINT32" Name="OperationSet" />
+            <Return Type="[XA2_HRESULT]" />
+        </Api>
+				<Api Name="GetFrequencyRatio">
+            <Param Type="float*" Name="pRatio" />
+            <Return Type="void" />
+        </Api>
+				<Api Name="SetSourceSampleRate">
+            <Param Type="UINT32" Name="NewSourceSampleRate" />
+            <Return Type="[XA2_HRESULT]" />
+        </Api>
+		</Interface>
+</ApiMonitor>

@@ -1,0 +1,16 @@
+<ApiMonitor>
+    <Include Filename="Interfaces\XAudio\xaudio_headers.xml" />
+    <Include Filename="Interfaces\XAudio\IXAudio2Voice.xml" />
+    <Interface Name="IXAudio2EngineCallback" OnlineHelp="MSDN" ErrorFunc="HRESULT" Category="Audio and Video/Core Audio/Windows Audio Session">
+				<Api Name="OnProcessingPassStart">
+            <Return Type="void" />
+        </Api>
+				<Api Name="OnProcessingPassEnd">
+            <Return Type="void" />
+        </Api>
+				<Api Name="OnCriticalError">
+            <Param Type="HRESULT" Name="Error" />
+            <Return Type="void" />
+        </Api>
+		</Interface>
+</ApiMonitor>

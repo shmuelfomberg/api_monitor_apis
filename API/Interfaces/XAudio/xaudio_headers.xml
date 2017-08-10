@@ -1,0 +1,146 @@
+<ApiMonitor>
+    <Include Filename="Headers\windows.h.xml" />
+    <Headers>
+
+				<Variable Name="IXAudio2"          Type="Interface" />
+        <Variable Name="IXAudio2EngineCallback"          Type="Interface" />
+        <Variable Name="IXAudio2VoiceCallback"          Type="Interface" />
+        <Variable Name="IXAudio2Voice"          Type="Interface" />
+        <Variable Name="IXAudio2SourceVoice"          Type="Interface" />
+        <Variable Name="IXAudio2SubmixVoice"          Type="Interface" />
+        <Variable Name="IXAudio2MasteringVoice"          Type="Interface" />
+
+		    <Variable Name="[XA2_HRESULT]" Type="Alias" Base="HRESULT">
+            <Display Name="HRESULT" />
+            <Enum Reset="True">
+                <Set Name="S_OK"                           Value="0x00000000" />
+                <Set Name="S_FALSE"                         Value="1" />
+                <Set Name="XAUDIO2_E_INVALID_CALLT"         Value="0x88960001" /> 
+                <Set Name="XAUDIO2_E_XMA_DECODER_ERRORT"    Value="0x88960002" />
+                <Set Name="XAUDIO2_E_XAPO_CREATION_FAILEDT" Value="0x88960003" />
+                <Set Name="XAUDIO2_E_DEVICE_INVALIDATEDT"   Value="0x88960004" />
+            </Enum>
+        </Variable>
+
+
+			<Variable Name="XAUDIO2_VOICE_DETAILS" Type="Struct">
+				<Field Type="UINT32"            Name="CreationFlags" />
+				<Field Type="UINT32"            Name="ActiveFlags" />
+				<Field Type="UINT32"            Name="InputChannels" />
+				<Field Type="UINT32"            Name="InputSampleRate" />
+			</Variable>
+			<Variable Name="XAUDIO2_VOICE_DETAILS*"      Type="Pointer"  Base="XAUDIO2_VOICE_DETAILS" />
+
+			<Variable Name="XAUDIO2_SEND_DESCRIPTOR" Type="Struct">
+				<Field Type="UINT32"            Name="Flags" />
+				<Field Type="IXAudio2Voice*"            Name="pOutputVoice" />
+			</Variable>
+			<Variable Name="XAUDIO2_SEND_DESCRIPTOR*"      Type="Pointer"  Base="XAUDIO2_SEND_DESCRIPTOR" />
+
+
+			<Variable Name="XAUDIO2_VOICE_SENDS" Type="Struct">
+				<Field Type="UINT32"            Name="SendCount" />
+				<Field Type="XAUDIO2_SEND_DESCRIPTOR*"            Name="pSends" />
+			</Variable>
+			<Variable Name="XAUDIO2_VOICE_SENDS*"      Type="Pointer"  Base="XAUDIO2_VOICE_SENDS" />
+
+			<Variable Name="XAUDIO2_EFFECT_DESCRIPTOR" Type="Struct">
+				<Field Type="IUnknown*"            Name="pEffect" />
+				<Field Type="BOOL"            Name="InitialState" />
+				<Field Type="UINT32"            Name="OutputChannels" />
+			</Variable>
+			<Variable Name="XAUDIO2_EFFECT_DESCRIPTOR*"      Type="Pointer"  Base="XAUDIO2_EFFECT_DESCRIPTOR" />
+
+			<Variable Name="XAUDIO2_EFFECT_CHAIN" Type="Struct">
+				<Field Type="UINT32"            Name="EffectCount" />
+				<Field Type="XAUDIO2_EFFECT_DESCRIPTOR*"            Name="pEffectDescriptors" />
+			</Variable>
+			<Variable Name="XAUDIO2_EFFECT_CHAIN*"      Type="Pointer"  Base="XAUDIO2_EFFECT_CHAIN" />
+
+		    <Variable Name="[XAUDIO2_FILTER_TYPE]" Type="Alias" Base="UINT">
+            <Enum>
+                <Set Name="LowPassFilter" Value="0" />
+                <Set Name="BandPassFilter" Value="1" />
+                <Set Name="HighPassFilter" Value="2" />
+                <Set Name="NotchFilter" Value="3" />
+                <Set Name="LowPassOnePoleFilter" Value="4" />
+                <Set Name="HighPassOnePoleFilter" Value="5" />
+						</Enum>
+				</Variable>
+			
+			<Variable Name="XAUDIO2_FILTER_PARAMETERS" Type="Struct">
+				<Field Type="[XAUDIO2_FILTER_TYPE]"            Name="Type" />
+				<Field Type="float"            Name="Frequency" />
+				<Field Type="float"            Name="OneOverQ" />
+			</Variable>
+			<Variable Name="XAUDIO2_FILTER_PARAMETERS*"      Type="Pointer"  Base="XAUDIO2_FILTER_PARAMETERS" />
+
+			<Variable Name="XAUDIO2_BUFFER" Type="Struct">
+				<Field Type="UINT32"            Name="Flags" />
+				<Field Type="UINT32"            Name="AudioBytes" />
+				<Field Type="BYTE*"            Name="pAudioData" />
+				<Field Type="UINT32"            Name="PlayBegin" />
+				<Field Type="UINT32"            Name="PlayLength" />
+				<Field Type="UINT32"            Name="LoopBegin" />
+				<Field Type="UINT32"            Name="LoopLength" />
+				<Field Type="UINT32"            Name="LoopCount" />
+				<Field Type="PVOID"            Name="pContext" />
+			</Variable>
+			<Variable Name="XAUDIO2_BUFFER*"      Type="Pointer"  Base="XAUDIO2_BUFFER" />
+
+			<Variable Name="XAUDIO2_BUFFER_WMA" Type="Struct">
+				<Field Type="UINT32*"            Name="pDecodedPacketCumulativeBytes" Count="PacketCount" />
+				<Field Type="UINT32"            Name="PacketCount" />
+			</Variable>
+			<Variable Name="XAUDIO2_BUFFER_WMA*"      Type="Pointer"  Base="XAUDIO2_BUFFER_WMA" />
+
+			<Variable Name="XAUDIO2_VOICE_STATE" Type="Struct">
+				<Field Type="PVOID"            Name="pCurrentBufferContext" />
+				<Field Type="UINT32"            Name="BuffersQueued" />
+				<Field Type="UINT64"            Name="SamplesPlayed" />
+			</Variable>
+			<Variable Name="XAUDIO2_VOICE_STATE*"      Type="Pointer"  Base="XAUDIO2_VOICE_STATE" />
+
+			<Variable Name="XAUDIO2_PERFORMANCE_DATA" Type="Struct">
+				<Field Type="UINT64"            Name="AudioCyclesSinceLastQuery" />
+				<Field Type="UINT64"            Name="TotalCyclesSinceLastQuery" />
+				<Field Type="UINT32"            Name="MinimumCyclesPerQuantum" />
+				<Field Type="UINT32"            Name="MaximumCyclesPerQuantum" />
+				<Field Type="UINT32"            Name="MemoryUsageInBytes" />
+				<Field Type="UINT32"            Name="CurrentLatencyInSamples" />
+				<Field Type="UINT32"            Name="GlitchesSinceEngineStarted" />
+				<Field Type="UINT32"            Name="ActiveSourceVoiceCount" />
+				<Field Type="UINT32"            Name="TotalSourceVoiceCount" />
+				<Field Type="UINT32"            Name="ActiveSubmixVoiceCount" />
+				<Field Type="UINT32"            Name="ActiveResamplerCount" />
+				<Field Type="UINT32"            Name="ActiveMatrixMixCount" />
+				<Field Type="UINT32"            Name="ActiveXmaSourceVoices" />
+				<Field Type="UINT32"            Name="ActiveXmaStreams" />
+			</Variable>
+			<Variable Name="XAUDIO2_PERFORMANCE_DATA*"      Type="Pointer"  Base="XAUDIO2_PERFORMANCE_DATA" />
+
+			<Variable Name="XAUDIO2_DEBUG_CONFIGURATION" Type="Struct">
+				<Field Type="UINT32"            Name="TraceMask" />
+				<Field Type="UINT32"            Name="BreakMask" />
+				<Field Type="BOOL"            Name="LogThreadID" />
+				<Field Type="BOOL"            Name="LogFileline" />
+				<Field Type="BOOL"            Name="LogFunctionName" />
+				<Field Type="BOOL"            Name="LogTiming" />
+			</Variable>
+			<Variable Name="XAUDIO2_DEBUG_CONFIGURATION*"      Type="Pointer"  Base="XAUDIO2_DEBUG_CONFIGURATION" />
+
+		    <Variable Name="[AUDIO_STREAM_CATEGORY]" Type="Alias" Base="UINT">
+            <Enum>
+                <Set Name="AudioCategory_Other" Value="0" />
+                <Set Name="AudioCategory_ForegroundOnlyMedia" Value="1" />
+                <Set Name="AudioCategory_BackgroundCapableMedia" Value="2" />
+                <Set Name="AudioCategory_Communications" Value="3" />
+                <Set Name="AudioCategory_Alerts" Value="4" />
+                <Set Name="AudioCategory_SoundEffects" Value="5" />
+                <Set Name="AudioCategory_GameEffects" Value="6" />
+                <Set Name="AudioCategory_GameMedia" Value="7" />
+						</Enum>
+				</Variable>
+			
+			</Headers>
+</ApiMonitor>

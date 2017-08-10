@@ -1,0 +1,51 @@
+<ApiMonitor>
+    <Include Filename="Interfaces\XAudio\xaudio_headers.xml" />
+    <Module Name="XAudio2_8.dll" CallingConvention="STDCALL" OnlineHelp="MSDN" ErrorFunc="HRESULT" Category="Audio and Video/Legacy Audio and Video/XAudio">
+
+				<Variable Name="[XAUDIO2_PROCESSOR]" Type="Alias" Base="UINT32">
+            <Display Name="UINT32" />
+            <Flag>
+                <Set Name="Processor1"  Value="0x00000001" />
+                <Set Name="Processor2"  Value="0x00000002" />
+                <Set Name="Processor3"  Value="0x00000004" />
+                <Set Name="Processor4"  Value="0x00000008" />
+                <Set Name="Processor5"  Value="0x00000010" />
+                <Set Name="Processor6"  Value="0x00000020" />
+                <Set Name="Processor7"  Value="0x00000040" />
+                <Set Name="Processor8"  Value="0x00000080" />
+                <Set Name="Processor9"  Value="0x00000100" />
+                <Set Name="Processor10" Value="0x00000200" />
+                <Set Name="Processor11" Value="0x00000400" />
+                <Set Name="Processor12" Value="0x00000800" />
+                <Set Name="Processor13" Value="0x00001000" />
+                <Set Name="Processor14" Value="0x00002000" />
+                <Set Name="Processor15" Value="0x00004000" />
+                <Set Name="Processor16" Value="0x00008000" />
+                <Set Name="Processor17" Value="0x00010000" />
+                <Set Name="Processor18" Value="0x00020000" />
+                <Set Name="Processor19" Value="0x00040000" />
+                <Set Name="Processor20" Value="0x00080000" />
+                <Set Name="Processor21" Value="0x00100000" />
+                <Set Name="Processor22" Value="0x00200000" />
+                <Set Name="Processor23" Value="0x00400000" />
+                <Set Name="Processor24" Value="0x00800000" />
+                <Set Name="Processor25" Value="0x01000000" />
+                <Set Name="Processor26" Value="0x02000000" />
+                <Set Name="Processor27" Value="0x04000000" />
+                <Set Name="Processor28" Value="0x08000000" />
+                <Set Name="Processor29" Value="0x10000000" />
+                <Set Name="Processor30" Value="0x20000000" />
+                <Set Name="Processor31" Value="0x40000000" />
+                <Set Name="Processor32" Value="0x80000000" />
+                <Set Name="XAUDIO2_ANY_PROCESSOR" Value="0xffffffff" />
+            </Flag>
+        </Variable>
+
+				<Api Name="XAudio2Create" Ordinal="1">
+            <Param Type="IXAudio2**" Name="ppXAudio2" />
+            <Param Type="UINT32" Name="Flags" />
+            <Param Type="[XAUDIO2_PROCESSOR]" Name="XAudio2Processor" />
+            <Return Type="[XA2_HRESULT]" />
+        </Api>
+    </Module>
+</ApiMonitor>
