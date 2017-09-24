@@ -1,0 +1,242 @@
+<!--
+    API Monitor Definitions
+    (c) 2010-2011, Rohitab Batra <rohitab@rohitab.com>
+    http://www.rohitab.com/apimonitor/
+-->
+<ApiMonitor>
+    <Module Name="D3dcompiler_47.dll" CallingConvention="STDCALL" OnlineHelp="MSDN" ErrorFunc="HRESULT" Category="Graphics and Gaming/DirectX Graphics and Gaming/Direct3D/11/Compiler">
+        <!-- Variables -->
+			<Variable Name="D3D_SHADER_MACRO" Type="Struct">
+				<Field Type="LPCSTR"   Name="Name" />
+				<Field Type="LPCSTR"   Name="Definition" />
+			</Variable>
+     	<Variable Name="D3D_SHADER_MACRO*"      Type="Pointer"  Base="D3D_SHADER_MACRO" />
+
+			<Variable Name="D3D_SHADER_DATA" Type="Struct">
+				<Field Type="LPCVOID"   Name="pBytecode" />
+				<Field Type="SIZE_T"   Name="BytecodeLength" />
+			</Variable>
+     	<Variable Name="D3D_SHADER_DATA*"      Type="Pointer"  Base="D3D_SHADER_DATA" />
+
+		  <Variable Name="D3D_BLOB_PART" Type="Alias" Base="UINT">
+				<Display Name="UINT" />
+				<Enum>
+					<Set Name="D3D_BLOB_INPUT_SIGNATURE_BLOB"      Value="0" />
+					<Set Name="D3D_BLOB_OUTPUT_SIGNATURE_BLOB"      Value="1" />
+					<Set Name="D3D_BLOB_INPUT_AND_OUTPUT_SIGNATURE_BLOB"      Value="2" />
+					<Set Name="D3D_BLOB_PATCH_CONSTANT_SIGNATURE_BLOB"      Value="3" />
+					<Set Name="D3D_BLOB_ALL_SIGNATURE_BLOB"      Value="4" />
+					<Set Name="D3D_BLOB_DEBUG_INFO"      Value="5" />
+					<Set Name="D3D_BLOB_LEGACY_SHADER"      Value="6" />
+					<Set Name="D3D_BLOB_XNA_PREPASS_SHADER"      Value="7" />
+					<Set Name="D3D_BLOB_XNA_SHADER"      Value="8" />
+					<Set Name="D3D_BLOB_PDB"      Value="9" />
+					<Set Name="D3D_BLOB_PRIVATE_DATA"      Value="1" />
+					<Set Name="D3D_BLOB_TEST_ALTERNATE_SHADER"      Value="0x8000" />
+					<Set Name="D3D_BLOB_TEST_COMPILE_DETAILS"      Value="0x8001" />
+					<Set Name="D3D_BLOB_TEST_COMPILE_PERF"      Value="0x8002" />
+					<Set Name="D3D_BLOB_TEST_COMPILE_REPORT"      Value="0x8003" />
+				</Enum>
+	   </Variable>
+        <Variable Name="ID3D11Linker"                     Type="Interface" />
+        <Variable Name="ID3D11Module"                     Type="Interface" />
+        <Variable Name="ID3D11FunctionLinkingGraph"       Type="Interface" />
+
+        <!-- APIs -->
+        <Api Name="D3DCompile">
+            <Param Type="LPCVOID" Name="pSrcData" />
+            <Param Type="SIZE_T" Name="SrcDataSize" />
+            <Param Type="LPCSTR" Name="pSourceName" />
+            <Param Type="D3D_SHADER_MACRO*" Name="pDefines" />
+            <Param Type="ID3DInclude*" Name="pInclude" />
+            <Param Type="LPCSTR" Name="pEntrypoint" />
+            <Param Type="LPCSTR" Name="pTarget" />
+            <Param Type="UINT" Name="Flags1" />
+            <Param Type="UINT" Name="Flags2" />
+            <Param Type="ID3DBlob**" Name="ppCode" />
+            <Param Type="ID3DBlob**" Name="ppErrorMsgs" />
+            <Return Type="HRESULT" />
+        </Api>
+        <Api Name="D3DCompile2">
+            <Param Type="LPCVOID" Name="pSrcData" />
+            <Param Type="SIZE_T" Name="SrcDataSize" />
+            <Param Type="LPCSTR" Name="pSourceName" />
+            <Param Type="D3D_SHADER_MACRO*" Name="pDefines" />
+            <Param Type="ID3DInclude*" Name="pInclude" />
+            <Param Type="LPCSTR" Name="pEntrypoint" />
+            <Param Type="LPCSTR" Name="pTarget" />
+            <Param Type="UINT" Name="Flags1" />
+            <Param Type="UINT" Name="Flags2" />
+            <Param Type="UINT" Name="SecondaryDataFlags" />
+            <Param Type="LPCVOID" Name="pSecondaryData" />
+            <Param Type="SIZE_T" Name="SecondaryDataSize" />
+            <Param Type="ID3DBlob**" Name="ppCode" />
+            <Param Type="ID3DBlob**" Name="ppErrorMsgs" />
+            <Return Type="HRESULT" />
+        </Api>
+        <Api Name="D3DCompileFromFile">
+            <Param Type="LPCWSTR" Name="pFileName" />
+            <Param Type="D3D_SHADER_MACRO*" Name="pDefines" />
+            <Param Type="ID3DInclude*" Name="pInclude" />
+            <Param Type="LPCSTR" Name="pEntrypoint" />
+            <Param Type="LPCSTR" Name="pTarget" />
+            <Param Type="UINT" Name="Flags1" />
+            <Param Type="UINT" Name="Flags2" />
+            <Param Type="ID3DBlob**" Name="ppCode" />
+            <Param Type="ID3DBlob**" Name="ppErrorMsgs" />
+            <Return Type="HRESULT" />
+        </Api>
+        <Api Name="D3DPreprocess">
+            <Param Type="LPCVOID" Name="pSrcData" />
+            <Param Type="SIZE_T" Name="SrcDataSize" />
+            <Param Type="LPCSTR" Name="pSourceName" />
+            <Param Type="D3D_SHADER_MACRO*" Name="pDefines" />
+            <Param Type="ID3DInclude*" Name="pInclude" />
+            <Param Type="ID3DBlob**" Name="ppCodeText" />
+            <Param Type="ID3DBlob**" Name="ppErrorMsgs" />
+            <Return Type="HRESULT" />
+        </Api>
+        <Api Name="D3DGetDebugInfo">
+            <Param Type="LPCVOID" Name="pSrcData" />
+            <Param Type="SIZE_T" Name="SrcDataSize" />
+            <Param Type="ID3DBlob**" Name="ppDebugInfo" />
+            <Return Type="HRESULT" />
+        </Api>
+        <Api Name="D3D11Reflect">
+            <Param Type="LPCVOID" Name="pSrcData" />
+            <Param Type="SIZE_T" Name="SrcDataSize" />
+            <Param Type="ID3D11ShaderReflection**" Name="ppReflector" />
+            <Return Type="HRESULT" />
+        </Api>
+        <Api Name="D3DReflect">
+            <Param Type="LPCVOID" Name="pSrcData" />
+            <Param Type="SIZE_T" Name="SrcDataSize" />
+            <Param Type="REFIID" Name="pInterface" />
+            <Param Type="void**" Name="ppReflector" />
+            <Return Type="HRESULT" />
+        </Api>
+        <Api Name="D3DReflectLibrary">
+            <Param Type="LPCVOID" Name="pSrcData" />
+            <Param Type="SIZE_T" Name="SrcDataSize" />
+            <Param Type="REFIID" Name="pInterface" />
+            <Param Type="void**" Name="ppReflector" />
+            <Return Type="HRESULT" />
+        </Api>
+        <Api Name="D3DDisassemble">
+            <Param Type="LPCVOID" Name="pSrcData" />
+            <Param Type="SIZE_T" Name="SrcDataSize" />
+            <Param Type="UINT" Name="Flags" />
+            <Param Type="LPCSTR" Name="szComments" />
+            <Param Type="ID3DBlob**" Name="ppDisassembly" />
+            <Return Type="HRESULT" />
+        </Api>
+        <Api Name="D3DDisassembleRegion">
+            <Param Type="LPCVOID" Name="pSrcData" />
+            <Param Type="SIZE_T" Name="SrcDataSize" />
+            <Param Type="UINT" Name="Flags" />
+            <Param Type="LPCSTR" Name="szComments" />
+            <Param Type="SIZE_T" Name="StartByteOffset" />
+            <Param Type="SIZE_T" Name="NumInsts" />
+            <Param Type="SIZE_T*" Name="pFinishByteOffset" />
+            <Param Type="ID3DBlob**" Name="ppDisassembly" />
+            <Return Type="HRESULT" />
+        </Api>
+        <Api Name="D3DCreateLinker">
+            <Param Type="ID3D11Linker**" Name="ppLinker" />
+            <Return Type="HRESULT" />
+        </Api>
+        <Api Name="D3DLoadModule">
+            <Param Type="LPCVOID" Name="pSrcData" />
+            <Param Type="SIZE_T" Name="cbSrcDataSize" />
+            <Param Type="ID3D11Module**" Name="ppModule" />
+            <Return Type="HRESULT" />
+        </Api>
+        <Api Name="D3DCreateFunctionLinkingGraph">
+            <Param Type="UINT" Name="Flags" />
+            <Param Type="ID3D11FunctionLinkingGraph**" Name="ppFunctionLinkingGraph" />
+            <Return Type="HRESULT" />
+        </Api>
+        <Api Name="D3DDisassemble10Effect">
+            <Param Type="ID3D10Effect*" Name="pEffect" />
+            <Param Type="UINT" Name="Flags" />
+            <Param Type="ID3DBlob**" Name="ppDisassembly" />
+            <Return Type="HRESULT" />
+        </Api>
+        <Api Name="D3DGetTraceInstructionOffsets">
+            <Param Type="LPCVOID" Name="pSrcData" />
+            <Param Type="SIZE_T" Name="SrcDataSize" />
+            <Param Type="UINT" Name="Flags" />
+            <Param Type="SIZE_T" Name="StartInstIndex" />
+            <Param Type="SIZE_T" Name="NumInsts" />
+            <Param Type="SIZE_T*" Name="pOffsets" />
+            <Param Type="SIZE_T*" Name="pTotalInsts" />
+            <Return Type="HRESULT" />
+        </Api>
+        <Api Name="D3DGetInputSignatureBlob">
+            <Param Type="LPCVOID" Name="pSrcData" />
+            <Param Type="SIZE_T" Name="SrcDataSize" />
+            <Param Type="ID3DBlob**" Name="ppSignatureBlob" />
+            <Return Type="HRESULT" />
+        </Api>
+        <Api Name="D3DGetOutputSignatureBlob">
+            <Param Type="LPCVOID" Name="pSrcData" />
+            <Param Type="SIZE_T" Name="SrcDataSize" />
+            <Param Type="ID3DBlob**" Name="ppSignatureBlob" />
+            <Return Type="HRESULT" />
+        </Api>
+        <Api Name="D3DGetInputAndOutputSignatureBlob">
+            <Param Type="LPCVOID" Name="pSrcData" />
+            <Param Type="SIZE_T" Name="SrcDataSize" />
+            <Param Type="ID3DBlob**" Name="ppSignatureBlob" />
+            <Return Type="HRESULT" />
+        </Api>
+        <Api Name="D3DGetTraceInstructionOffsets">
+            <Param Type="LPCVOID" Name="pShaderBytecode" />
+            <Param Type="SIZE_T" Name="BytecodeLength" />
+            <Param Type="UINT" Name="uStripFlags" />
+            <Param Type="ID3DBlob**" Name="ppStrippedBlob" />
+            <Return Type="HRESULT" />
+        </Api>
+        <Api Name="D3DGetBlobPart">
+            <Param Type="LPCVOID" Name="pSrcData" />
+            <Param Type="SIZE_T" Name="SrcDataSize" />
+            <Param Type="D3D_BLOB_PART" Name="Part" />
+            <Param Type="UINT" Name="Flags" />
+            <Param Type="ID3DBlob**" Name="ppPart" />
+            <Return Type="HRESULT" />
+        </Api>
+        <Api Name="D3DSetBlobPart">
+            <Param Type="LPCVOID" Name="pSrcData" />
+            <Param Type="SIZE_T" Name="SrcDataSize" />
+            <Param Type="D3D_BLOB_PART" Name="Part" />
+            <Param Type="UINT" Name="Flags" />
+            <Param Type="LPCVOID" Name="pPart" />
+            <Param Type="SIZE_T" Name="PartSize" />
+            <Param Type="ID3DBlob**" Name="ppNewShader" />
+            <Return Type="HRESULT" />
+        </Api>
+        <Api Name="D3DCreateBlob">
+            <Param Type="SIZE_T" Name="Size" />
+            <Param Type="ID3DBlob**" Name="ppBlob" />
+            <Return Type="HRESULT" />
+        </Api>
+        <Api Name="D3DCompressShaders">
+            <Param Type="UINT" Name="uNumShaders" />
+            <Param Type="D3D_SHADER_DATA*" Name="pShaderData" />
+            <Param Type="UINT" Name="Flags" />
+            <Param Type="ID3DBlob**" Name="ppCompressedData" />
+            <Return Type="HRESULT" />
+        </Api>
+        <Api Name="D3DDecompressShaders">
+            <Param Type="LPCVOID" Name="pSrcData" />
+            <Param Type="SIZE_T" Name="SrcDataSize" />
+            <Param Type="UINT" Name="uNumShaders" />
+            <Param Type="UINT" Name="uStartIndex" />
+            <Param Type="UINT*" Name="pIndices" />
+            <Param Type="UINT" Name="Flags" />
+            <Param Type="ID3DBlob**" Name="ppShaders" />
+            <Param Type="UINT*" Name="pTotalShaders" />
+            <Return Type="HRESULT" />
+        </Api>
+    </Module>
+</ApiMonitor>

@@ -1,0 +1,28 @@
+<!--
+    API Monitor Definitions
+    (c) 2010-2011, Rohitab Batra <rohitab@rohitab.com>
+    http://www.rohitab.com/apimonitor/
+-->
+<ApiMonitor>
+    <Interface Name="ID3D11Linker" Id="{59A6CD0E-E10D-4C1F-88C0-63ABA1DAF30E}" BaseInterface="IUnknown" OnlineHelp="MSDN" ErrorFunc="HRESULT" Category="Graphics and Gaming/DirectX Graphics and Gaming/Direct3D/11/Resource">
+    <Variable Name="ID3D11ModuleInstance"                     Type="Interface" />
+        <Api Name="Link">
+            <Param Type="ID3D11ModuleInstance*" Name="pEntry" />
+            <Param Type="LPCSTR" Name="pEntryName" />
+            <Param Type="LPCSTR" Name="pTargetName" />
+            <Param Type="UINT" Name="uFlags" />
+            <Param Type="ID3DBlob**" Name="ppShaderBlob" />
+            <Param Type="ID3DBlob**" Name="ppErrorBuffer" />
+            <Return Type="HRESULT" />
+        </Api>
+        <Api Name="UseLibrary">
+            <Param Type="ID3D11ModuleInstance*" Name="pLibraryMI" />
+            <Return Type="HRESULT" />
+        </Api>
+        <Api Name="AddClipPlaneFromCBuffer">
+            <Param Type="UINT" Name="uCBufferSlot" />
+            <Param Type="UINT" Name="uCBufferEntry" />
+            <Return Type="HRESULT" />
+        </Api>
+    </Interface>
+</ApiMonitor>
